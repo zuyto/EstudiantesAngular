@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="card-header">
+    <h3>{{ estudiante ? 'Editar Estudiante' : 'Nuevo Estudiante' }}</h3>
+  </div>
+  <div class="card-body">
+
+   <div *ngIf="estudiante" class="alert-info mb-4">
+      Editando estudiante ID: {{ form.get('id').value }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <!-- Campo Nombre -->
+      <div class="form-group">
+        <label>Nombre</label>
+        <input
+          type="text"
+          formControlName="nombre"
+          class="form-control"
+          [class.is-invalid]="form.get('nombre').invalid && form.get('nombre').touched"
+          placeholder="Nombre del estudiante"
+        >
+        <div *ngIf="form.get('nombre').invalid && form.get('nombre').touched" class="invalid-feedback">
+          <div *ngIf="form.get('nombre').errors.required">El nombre es obligatorio.</div>
+          <div *ngIf="form.get('nombre').errors.maxlength">Máximo 50 caracteres.</div>
+        </div>
+      </div>
+
+      <!-- Campo Email -->
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control"
+          [class.is-invalid]="form.get('email').invalid && form.get('email').touched"
+          placeholder="Email del estudiante"
+        >
+        <div *ngIf="form.get('email').invalid && form.get('email').touched" class="invalid-feedback">
+          <div *ngIf="form.get('email').errors.required">El email es obligatorio.</div>
+          <div *ngIf="form.get('email').errors.email">Ingresa un email válido.</div>
+        </div>
+      </div>
+
+      <!-- Campo Materias -->
+      <div class="form-group">
+        <label>Materias (Máximo 3)</label>
+        <div class="alert-info" *ngIf="form.get('materiaIds').value.length >= 3">
+          Has alcanzado el límite de 3 materias.
+        </div>
+        <div *ngIf="form.get('materiaIds').invalid && form.get('materiaIds').touched" class="invalid-feedback">
+          Debes seleccionar al menos 1 materia.
+        </div>
+        <div class="list-group">
+          <button
+            type="button"
+            *ngFor="let materia of materias"
+            class="list-group-item list-group-item-action"
+            [class.active]="form.get('materiaIds').value.includes(materia.id)"
+            (click)="toggleMateria(materia.id)"
+            [disabled]="!form.get('materiaIds').value.includes(materia.id) && form.get('materiaIds').value.length >= 3"
+          >
+            {{ materia.nombre }} ({{ materia.creditos }} créditos)
+          </button>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary mr-2" [disabled]="form.invalid">
+          {{ estudiante ? 'Actualizar' : 'Guardar' }}
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="cancelForm()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

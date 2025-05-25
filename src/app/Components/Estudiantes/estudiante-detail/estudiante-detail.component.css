@@ -1,0 +1,106 @@
+/* Tarjeta principal */
+.card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 2rem;
+}
+
+/* Encabezado de la tarjeta */
+.card-header {
+  background-color: #6c757d; /* gris Bootstrap (secondary) */
+  color: #fff;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: none;
+}
+
+/* Botón Volver */
+.card-header .btn {
+  background-color: #fff;
+  color: #6c757d;
+  font-weight: bold;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.card-header .btn:hover {
+  background-color: #f1f1f1;
+  color: #343a40;
+}
+
+/* Spinner */
+.spinner-border {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #007bff;
+}
+
+/* Información básica */
+h4 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+/* Listado de información */
+.list-group-item {
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+.list-group-item strong {
+  color: #007bff;
+}
+
+/* Tarjetas de materias */
+.card-body h5 {
+  font-size: 1rem;
+  color: #343a40;
+}
+
+.card-body .btn-info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  font-weight: bold;
+}
+
+.card-body .btn-info:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+/* Alertas */
+.alert {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.alert-info {
+  background-color: #e9f7fd;
+  border-color: #bee5eb;
+  color: #0c5460; /* Azul oscuro para buen contraste */
+  font-weight: 500;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+.mt-3 h5 {
+  color: #212529; /* Gris oscuro para buena legibilidad */
+  font-weight: bold;
+}
+
+::ng-deep .alert-info {
+  color: #0c5460;
+}
+
+::ng-deep .mt-3 h5 {
+  color: #212529;
+}

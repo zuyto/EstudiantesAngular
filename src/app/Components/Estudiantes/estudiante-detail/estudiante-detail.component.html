@@ -1,0 +1,65 @@
+<div class="card">
+  <div class="card-header">
+    <h3>Detalle del Estudiante</h3>
+    <a routerLink="/estudiantes" class="btn btn-secondary btn-sm">
+      <i class="fa fa-arrow-left"></i> Volver
+    </a>
+  </div>
+  <div class="card-body">
+    <div *ngIf="loading" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Cargando...</span>
+      </div>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+
+    <div *ngIf="estudiante && !loading" class="row">
+      <div class="col-md-6">
+        <h4>Información Básica</h4>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>ID:</strong> {{ estudiante.id }}
+          </li>
+          <li class="list-group-item">
+            <strong>Nombre:</strong> {{ estudiante.nombre }}
+          </li>
+          <li class="list-group-item">
+            <strong>Email:</strong> {{ estudiante.email }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-6">
+        <h4>Materias Inscritas</h4>
+        <div *ngIf="estudiante.materiaIds && estudiante.materiaIds.length > 0; else noMaterias">
+          <div *ngFor="let materiaId of estudiante.materiaIds" class="card mb-2">
+            <div class="card-body">
+              <h5 class="card-title">{{ getMateriaNombre(materiaId) }}</h5>
+              <button class="btn btn-sm btn-info" (click)="cargarCompaneros(materiaId)">
+                Ver compañeros
+              </button>
+            </div>
+          </div>
+        </div>
+        <ng-template #noMaterias>
+          <div class="alert alert-info">No está inscrito en ninguna materia</div>
+        </ng-template>
+
+        <div *ngIf="materiaSeleccionada" class="mt-3">
+          <h5>Compañeros en {{ getMateriaNombre(materiaSeleccionada) }}</h5>
+          <ul class="list-group" *ngIf="companeros.length > 0; else noCompaneros">
+            <li class="list-group-item" *ngFor="let companero of companeros">
+              {{ companero }}
+            </li>
+          </ul>
+          <ng-template #noCompaneros>
+            <div class="alert-info">No hay compañeros en esta materia</div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

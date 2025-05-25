@@ -1,0 +1,56 @@
+# Angular build output
+/dist/
+/out-tsc/
+/tmp/
+/coverage/
+
+# Node modules
+/node_modules/
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# IDEs and editors
+/.idea/
+/.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Misc
+/.sass-cache/
+/connect.lock
+/libpeerconnection.log
+
+# Angular specific
+.angular/cache/
+
+# Compiled output from TypeScript
+*.js
+*.js.map
+*.tsbuildinfo
+
+# Environment files (optional: si no quieres subir tus variables)
+/src/environments/*.local.ts
+/src/environments/*.prod.ts
+/src/environments/*.dev.ts
+
+# Temporary files
+/tmp/
+
+# Bazel build output (if using Bazel)
+/bazel-out/
+
+# Coverage reports
+/coverage/
+
+# Others
+*.log
